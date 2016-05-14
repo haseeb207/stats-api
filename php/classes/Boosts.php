@@ -35,6 +35,8 @@ class Boosts
     public $clientSecret;
 
     /**
+     * Get Oauth Access Token
+     *
      * @return mixed
      * @throws \Exception
      * @see http://api.revcontent.io/docs/stats/index.html#api-Access-GetOauthAccess
@@ -52,6 +54,8 @@ class Boosts
     }
 
     /**
+     * Get all boosts
+     *
      * @param array $access_info
      * @param array $filters
      * @return mixed
@@ -76,6 +80,30 @@ class Boosts
             "authorization: {$access_info['token_type']} {$access_info['access_token']}",
             "cache-control: no-cache",
             "content-type: application/json"]
+        );
+    }
+
+    /**
+     * Update boost settings
+     *
+     * @param array $access_info
+     * @param $id
+     * @param array $post_fields
+     * @return string
+     * @throws \Exception
+     * @see http://api.revcontent.io/docs/stats/index.html#api-Boosts-PostBoostSettings
+     */
+    function updateBoostSettings(array $access_info, $id, array $post_fields)
+    {
+        $curl = new Curl();
+
+        return $curl->post(self::URL . '/stats/api/v1.0/boosts/' . $id . '/settings',
+            [
+                "authorization: {$access_info['token_type']} {$access_info['access_token']}",
+                "cache-control: no-cache",
+                "content-type: application/json",
+            ],
+            json_encode($post_fields)
         );
     }
 }

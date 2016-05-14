@@ -1,7 +1,24 @@
 <?php
 try {
+    /**
+     * @var string $client_id
+     */
     $client_id = '<CLIENT_ID>';
+    /**
+     * @var string $client_secret
+     */
     $client_secret = '<CLIENT_SECRET>';
+    /**
+     * @var integer $boost_id
+     */
+    $boost_id_to_update = <BOOST_ID>;
+
+    /**
+     * @param $input
+     */
+    $print_divider = function ($input) {
+        echo str_pad($input, 100, "-", STR_PAD_BOTH), PHP_EOL;
+    };
 
     $curl = curl_init();
 
@@ -27,11 +44,15 @@ try {
         throw new Exception("ACCESS TOKEN - cURL Error :: " . $err . ' Raw response :: '. $raw_response);
     }
 
+    $print_divider('ACCESS INFO');
+
     echo 'ACCESS TOKEN - RAW RESPONSE :: ', $raw_response, PHP_EOL;
     $access_info = json_decode($raw_response, true);
     if (!isset($access_info['access_token'])) {
         throw new Exception('Not able to get access. Raw response' . $raw_response);
     }
+
+    $print_divider('GET ALL BOOSTS');
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
@@ -60,21 +81,61 @@ try {
     $response_array = json_decode($raw_response, true);
 
     if (isset($response_array['errors'])) {
-        throw new Exception('Not able to get boosts - filters. Raw response ' . $raw_response);
+        throw new Exception('Not able to get boosts. Raw response ' . $raw_response);
     }
 
     if (!isset($response_array['success'])) {
-        throw new Exception('Not able to get boosts - filters. Raw response ' . $raw_response);
+        throw new Exception('Not able to get boosts. Raw response ' . $raw_response);
     }
 
     if (false === $response_array['success']) {
-        throw new Exception('Not able to get boosts - filters. Raw response ' . $raw_response);
+        throw new Exception('Not able to get boosts. Raw response ' . $raw_response);
     }
 
     if (count($response_array['data'])) {
         var_dump($response_array['data'][0]);
     } else {
         var_dump($response_array);
+    }
+
+    $print_divider('UPDATE BOOST SETTINGS');
+
+    $changes = [
+        "name" => "Update name",
+        "default_cpc" => "0.99",
+        "start_date_time" => "2016-05-14 00:00:00",
+        "has_end_date" => "true",
+        "end_date_time" => "2016-05-20 00:00:00",
+        "mobile_traffic" => ["3","4"],
+        "language_traffic" => ["1","2","3"]
+    ];
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.revcontent.io/stats/api/v1.0/boosts/{$boost_id_to_update}/settings",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => json_encode($changes),
+        CURLOPT_HTTPHEADER => array(
+            "authorization: {$access_info['token_type']} {$access_info['access_token']}",
+            "cache-control: no-cache",
+            "content-type: application/json"
+        ),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } else {
+        var_dump($response);
     }
 
 } catch (Exception $e) {
