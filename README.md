@@ -24,9 +24,29 @@ $ php stats_scripts.php
 ```bash
 ##
 # Object oriented example.
-# Please input valid client_id, client_scret and boost_id in classes/config.ini file
+# Please input valid client_id, client_secret and boost_id in classes/config.ini file.
 ##
 $ php stats.php
+```
+
+#Python examples
+
+## Location
+'python' folder
+
+## Requirements
+Python 2.7.11
+
+## Run
+
+From console
+
+```bash
+##
+# Simple script.
+# Please input valid client_id, client_secret and boost_id in classes/config.ini file.
+##
+$ python stats_scripts.py
 ```
 
 ## Examples

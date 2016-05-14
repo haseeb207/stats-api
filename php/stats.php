@@ -1,4 +1,13 @@
 <?php
+/**
+ * PHP version 5.6
+ *
+ * @category  Examples
+ * @package   Application
+ * @copyright 2016 Revcontent
+ * @license   http://www.revcontent.com Revcontent License
+ * @link      http://api.revcontent.io/docs/stats/index.html
+ */
 error_reporting(E_ALL);
 define('PATH',dirname(__FILE__));
 

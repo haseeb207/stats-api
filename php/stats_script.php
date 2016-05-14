@@ -1,4 +1,13 @@
 <?php
+/**
+ * PHP version 5.6
+ *
+ * @category  Examples
+ * @package   Application
+ * @copyright 2016 Revcontent
+ * @license   http://www.revcontent.com Revcontent License
+ * @link      http://api.revcontent.io/docs/stats/index.html
+ */
 try {
     /**
      * @var string $client_id
