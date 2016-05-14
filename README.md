@@ -1,15 +1,17 @@
-# STATS-API
+#STATS-API
 Stats API calls examples
 
-#PHP examples
+---
 
-## Location
+##PHP examples
+
+### Location
 'php' folder
 
-## Requirements
+### Requirements
 PHP 5.5 or higher installed
 
-## Run
+### Run
 
 From console
 
@@ -28,16 +30,17 @@ $ php stats_scripts.php
 ##
 $ php stats.php
 ```
+---
 
-#Python examples
+##Python examples
 
-## Location
+### Location
 'python' folder
 
-## Requirements
+### Requirements
 Python 2.7.11
 
-## Run
+### Run
 
 From console
 
@@ -49,14 +52,18 @@ From console
 $ python stats_scripts.py
 ```
 
-## Examples
+---
+
+### Implemented end points
 
 * <a href="http://api.revcontent.io/docs/stats/index.html#api-Access-GetOauthAccess" target="_blank">Get Access token</a>
 * <a href="http://api.revcontent.io/docs/stats/index.html#api-Boosts-GetAllBoosts" target="_blank">Get All Boost</a>
 * <a href="http://api.revcontent.io/docs/stats/index.html#api-Boosts-PostBoostsStatus" target="_blank">Update Boost Settings</a>
 
-## Documentation
+---
+### API Documentation
 http://api.revcontent.io/docs/stats/index.html
 
+---
 
 Thank you. If you have any problems, contact your Representative.
