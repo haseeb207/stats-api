@@ -3,6 +3,28 @@ Stats API calls examples
 
 ---
 
+##Java examples
+
+### Location
+'java/gradle' folder
+
+### Requirements
+Java 1.8
+Gradle 2.8
+
+### Run
+
+From console
+
+```bash
+##
+# Please input valid client_id, client_secret in config.ini file.
+##
+$ gradle clean test --info
+```
+
+---
+
 ##PHP examples
 
 ### Location
