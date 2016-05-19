@@ -8,19 +8,22 @@
  * @license   http://www.revcontent.com Revcontent License
  * @link      http://api.revcontent.io/docs/stats/index.html
  */
+error_reporting(E_ALL);
+define('PATH',dirname(__FILE__));
 try {
+    $credentials = parse_ini_file(PATH .'/config.ini');
     /**
      * @var string $client_id
      */
-    $client_id = '<CLIENT_ID>';
+    $client_id = $credentials['client_id'];;
     /**
      * @var string $client_secret
      */
-    $client_secret = '<CLIENT_SECRET>';
+    $client_secret = $credentials['client_secret'];
     /**
      * @var integer $boost_id
      */
-    $boost_id_to_update = <BOOST_ID>;
+    $boost_id_to_update = $credentials['boost_id'];
 
     /**
      * @param $input
@@ -30,7 +33,6 @@ try {
     };
 
     $curl = curl_init();
-
     curl_setopt_array($curl, array(
         CURLOPT_URL => "https://api.revcontent.io/oauth/token",
         CURLOPT_RETURNTRANSFER => true,

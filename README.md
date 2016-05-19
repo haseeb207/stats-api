@@ -9,8 +9,8 @@ Stats API calls examples
 'java/gradle' folder
 
 ### Requirements
-Java 1.8
-Gradle 2.8
+- Java 1.8
+- Gradle 2.8
 
 ### Run
 
@@ -31,7 +31,7 @@ $ gradle clean test --info
 'php' folder
 
 ### Requirements
-PHP 5.5 or higher installed
+PHP 5.5 or higher
 
 ### Run
 
@@ -40,7 +40,7 @@ From console
 ```bash
 ##
 # Simple script.
-# Please replace client id <CLIENT_ID>, <CLIENT_SECRET> and <BOOST_ID> at the top of the script.
+# Please input valid client_id, client_secret and boost_id in config.ini file.
 ##
 $ php stats_scripts.php
 ```
@@ -48,7 +48,7 @@ $ php stats_scripts.php
 ```bash
 ##
 # Object oriented example.
-# Please input valid client_id, client_secret and boost_id in classes/config.ini file.
+# Please input valid client_id, client_secret and boost_id in config.ini file.
 ##
 $ php stats.php
 ```

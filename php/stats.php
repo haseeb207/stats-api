@@ -21,7 +21,7 @@ $print_divider = function ($input) {
 };
 
 try {
-    $credentials = parse_ini_file(PATH .'/classes/config.ini');
+    $credentials = parse_ini_file(PATH .'/config.ini');
 
     $boost = new Revcontent\Stats\Boosts();
     $boost->clientId = $credentials['client_id'];
