@@ -9,6 +9,7 @@
 import httplib
 import json
 import ConfigParser
+from collections import OrderedDict
 
 try:
 
@@ -49,6 +50,25 @@ try:
     res = conn.getresponse()
     data = res.read()
 
+    print(data.decode("utf-8"))
+
+    print 'CREATE BOOST'.center(100, '-')
+
+    headers = {
+        'authorization': data_dict['token_type'] + " " + data_dict['access_token'],
+        'content-type': "application/json",
+        'cache-control': "no-cache"
+    }
+
+    changes = OrderedDict([
+        ("name", "testing"),
+        ("country_targeting", "include"),
+        ("country_codes", ["US", "PE"])
+    ])
+
+    conn.request('POST', '/stats/api/v1.0/boosts/add', json.dumps(changes, sort_keys=False), headers)
+    res = conn.getresponse()
+    data = res.read()
     print(data.decode("utf-8"))
 
     print 'UPDATE BOOST SETTINGS'.center(100, '-')
